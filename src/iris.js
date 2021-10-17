@@ -44,7 +44,6 @@ module.exports = function (RED) {
 
   function IRISNode(config) {
     const node = this;
-    console.log('new node', config);
     RED.nodes.createNode(node, config);
     node.topic = config.topic;
     node.config = RED.nodes.getNode(config.InterSystemsIRISConfig);
@@ -57,7 +56,6 @@ module.exports = function (RED) {
     }
 
     node.config.on("state", (info) => {
-      console.log('new state', info, node.id);
       if (info === "connecting") {
         node.status({ fill: "grey", shape: "ring", text: info });
       } else if (info === "connected") {
@@ -70,7 +68,6 @@ module.exports = function (RED) {
 
     node.on('input', async (msg, send, done) => {
       // send = send || function() { node.send.apply(node,arguments) };
-      console.log('new input', msg)
       if (!node.config.connected) {
         node.error("Database not connected", msg);
         node.status({ fill: "red", shape: "ring", text: "not yet connected" });
@@ -87,13 +84,11 @@ module.exports = function (RED) {
         .sql(query)
         .then(data => {
           node.status({ fill: "green", shape: "dot", text: "OK" });
-          console.log('query result', data);
           msg.payload = data.update ? data : data.rows;
           send(msg);
           if (done) { done(); }
         })
         .catch(err => {
-          console.log(err);
           node.error(err.message);
           node.status({ fill: "red", shape: "ring", text: "error" });
         });

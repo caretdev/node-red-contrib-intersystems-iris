@@ -9,11 +9,10 @@ services:
       - -a
       - iris session iris -U %SYS '##class(Security.Users).UnExpireUserPasswords("*")'
   nodered:
-    # image: nodered/node-red
-    build: node-red
+    image: caretdev/node-red
+    # build: node-red
     volumes:
       - .:/usr/src/node-red/node_modules/node-red-contrib-intersystems-iris
-      - ./test.js:/usr/src/node-red/test.js
       - data:/data
     ports:
       - 1880:1880
