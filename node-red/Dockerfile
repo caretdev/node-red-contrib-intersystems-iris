@@ -90,5 +90,3 @@ EXPOSE 1880
 # HEALTHCHECK CMD curl http://localhost:1880/ || exit 1
 
 ENTRYPOINT ["npm", "start", "--cache", "/data/.npm", "--", "--userDir", "/data"]
-
-RUN node-red-admin install node-red-dashboard
