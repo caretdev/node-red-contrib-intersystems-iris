@@ -1,0 +1,625 @@
+[
+    {
+        "id": "39ac75246186f68c",
+        "type": "tab",
+        "label": "IRIS SQL",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6069649c75a95958",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 200,
+        "wires": [
+            [
+                "a02e1c8985a0105e"
+            ]
+        ]
+    },
+    {
+        "id": "3630c9019d215784",
+        "type": "comment",
+        "z": "39ac75246186f68c",
+        "name": "Welcome to the demo of ability of using InterSystems IRIS in Node-RED \\n \\n Press small buttons on each inject nodes (on the left), to see it in action",
+        "info": "Welcome to the demo of ability of using InterSystems IRIS in Node-RED\n\\n\n\\n\nPress small buttons on each inject nodes (on the left), to see it in action\n",
+        "x": 430,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c63decc738ffb86b",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "CREATE",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "d06ac15f2cc4211f"
+            ]
+        ]
+    },
+    {
+        "id": "346bfd5c1c652f11",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d06ac15f2cc4211f",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "TABLE",
+        "func": "topic = 'CREATE TABLE \"access\" ( ';\ntopic = topic + '\"no\" INT NULL AUTO_INCREMENT PRIMARY KEY,';\ntopic = topic + '\"date\" TIMESTAMP DEFAULT Current_Timestamp,';\ntopic = topic + '\"room\" INT NULL,';\ntopic = topic + '\"id\" INT NULL';\ntopic = topic + ')';\nmsg.topic = topic;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "49b7cf927e386b70"
+            ]
+        ]
+    },
+    {
+        "id": "99c6f2ca2aa3036b",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "DROP",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "ed1a9e23687696b4"
+            ]
+        ]
+    },
+    {
+        "id": "a02e1c8985a0105e",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ed1a9e23687696b4",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "TABLE",
+        "func": "topic = 'DROP TABLE \"access\"';\nmsg.topic = topic;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "6069649c75a95958"
+            ]
+        ]
+    },
+    {
+        "id": "49b7cf927e386b70",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [
+                "346bfd5c1c652f11"
+            ]
+        ]
+    },
+    {
+        "id": "ea2c82a453efa3d2",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "INSERT",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 320,
+        "wires": [
+            [
+                "45bd5c82c27df429"
+            ]
+        ]
+    },
+    {
+        "id": "45bd5c82c27df429",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "INSERT",
+        "func": "if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\nif (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\n\ntopic = \"INSERT INTO \\\"access\\\" (\\\"room\\\", \\\"id\\\") VALUES ('\";\ntopic += room + \"', '\";\ntopic += id + \"')\";\n\nmsg.topic = topic;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 320,
+        "wires": [
+            [
+                "f5d4d8998327ccde"
+            ]
+        ]
+    },
+    {
+        "id": "02d82f1b2ca3e868",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "$string(payload,true)",
+        "targetType": "jsonata",
+        "statusVal": "$join([\"affected_rows\", $string(payload.affected_rows)], \" :\")\t",
+        "statusType": "jsonata",
+        "x": 880,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "630cabde7bab6ecf",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "DELETE ",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 380,
+        "wires": [
+            [
+                "fbb59d48e6ea59fb"
+            ]
+        ]
+    },
+    {
+        "id": "7ffcda2e8cfeb347",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "$string(payload,true)",
+        "targetType": "jsonata",
+        "statusVal": "$join([\"affected_rows\", $string(payload.affected_rows)], \" :\")\t",
+        "statusType": "jsonata",
+        "x": 880,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e19e2c35133cf699",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "UPDATE",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 440,
+        "wires": [
+            [
+                "afa47f5d4de6898a"
+            ]
+        ]
+    },
+    {
+        "id": "1fa905a7b3ad2101",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "$string(payload,true)",
+        "targetType": "jsonata",
+        "statusVal": "$join([\"affected_rows\", $string(payload.affected_rows)], \" :\")\t",
+        "statusType": "jsonata",
+        "x": 880,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "7006ee6c1be362eb",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "COUNT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 500,
+        "wires": [
+            [
+                "e32b8faebb2809ab"
+            ]
+        ]
+    },
+    {
+        "id": "fbb59d48e6ea59fb",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "DELETE ",
+        "func": "var newMsg = {\n\"topic\" : \"DELETE FROM \\\"access\\\" WHERE \\\"no\\\" = (SELECT TOP 1 \\\"no\\\" FROM \\\"access\\\" ORDER BY \\\"no\\\" DESC)\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "54de784f7cde1823"
+            ]
+        ]
+    },
+    {
+        "id": "afa47f5d4de6898a",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "UPDATE",
+        "func": "var newMsg = {\n\"topic\" : \"UPDATE \\\"access\\\" SET \\\"room\\\"='602' WHERE \\\"no\\\" = (select top 1 \\\"no\\\" from \\\"access\\\" ORDER BY \\\"date\\\" DESC)\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 440,
+        "wires": [
+            [
+                "3a164f918bbc4b07"
+            ]
+        ]
+    },
+    {
+        "id": "e32b8faebb2809ab",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "COUNT",
+        "func": "var newMsg = {\n\"topic\" : \"SELECT COUNT(*) cnt FROM \\\"access\\\"\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 500,
+        "wires": [
+            [
+                "12306ea6b69d57c3"
+            ]
+        ]
+    },
+    {
+        "id": "85f92b0d8e559f70",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload[0].cnt",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 920,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "f5d4d8998327ccde",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 320,
+        "wires": [
+            [
+                "02d82f1b2ca3e868"
+            ]
+        ]
+    },
+    {
+        "id": "54de784f7cde1823",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 380,
+        "wires": [
+            [
+                "7ffcda2e8cfeb347"
+            ]
+        ]
+    },
+    {
+        "id": "3a164f918bbc4b07",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 440,
+        "wires": [
+            [
+                "1fa905a7b3ad2101"
+            ]
+        ]
+    },
+    {
+        "id": "12306ea6b69d57c3",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 500,
+        "wires": [
+            [
+                "85f92b0d8e559f70"
+            ]
+        ]
+    },
+    {
+        "id": "691d31dc1708fb57",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "SELECT",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 580,
+        "wires": [
+            [
+                "1d34be52307bc720"
+            ]
+        ]
+    },
+    {
+        "id": "1d34be52307bc720",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "SELECT",
+        "func": "var newMsg = {\n\"topic\" : \"SELECT TOP 20 * FROM \\\"access\\\" ORDER BY \\\"date\\\" DESC\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 580,
+        "wires": [
+            [
+                "d2c039515357b0d4"
+            ]
+        ]
+    },
+    {
+        "id": "e6aab76f603d9a95",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "Date to TS",
+        "func": "\nfor(var i = 0; i < msg.payload.length; i++){\n    var dd = new Date(parseInt((new Date(msg.payload[i].date).getTime()).toFixed(0)));\n    msg.payload[i].date = dd.toLocaleTimeString('en-US');\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 640,
+        "wires": [
+            [
+                "5df8d2d4ee83c425"
+            ]
+        ]
+    },
+    {
+        "id": "57da9baadc916cd5",
+        "type": "link out",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "links": [
+            "d5f68b78.692828",
+            "01e89513ccd3fd74",
+            "33c14cb5.0c0b14",
+            "8b2213ea.cbdaa"
+        ],
+        "x": 835,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "01e89513ccd3fd74",
+        "type": "link in",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "links": [
+            "57da9baadc916cd5"
+        ],
+        "x": 295,
+        "y": 640,
+        "wires": [
+            [
+                "e6aab76f603d9a95"
+            ]
+        ]
+    },
+    {
+        "id": "d2c039515357b0d4",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 580,
+        "wires": [
+            [
+                "57da9baadc916cd5"
+            ]
+        ]
+    },
+    {
+        "id": "5df8d2d4ee83c425",
+        "type": "ui_template",
+        "z": "39ac75246186f68c",
+        "group": "eed4bf37.31aee",
+        "name": "",
+        "order": 2,
+        "width": "6",
+        "height": "7",
+        "format": "\n        \n<table style=\"width:100%\">\n  <tr>\n    <th>Index</th> \n    <th>Time</th>\n    <th>Room</th> \n    <th>ID</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:10\">\n    <td><center>{{$index + 1}}</center></td>\n    <td><center>{{msg.payload[$index].date}}</center></td>\n    <td><center>{{msg.payload[$index].room}}</center></td> \n    <td><center>{{msg.payload[$index].id}}</center></td>\n  </tr>\n</table>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 600,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa199874e4c9e9fa",
+        "type": "InterSystemsIRISConfig",
+        "name": "_SYSTEM@iris:1972/USER",
+        "host": "iris",
+        "hostFieldType": "str",
+        "port": "1972",
+        "portFieldType": "num",
+        "namespace": "USER",
+        "namespaceFieldType": "str",
+        "username": "_SYSTEM",
+        "usernameFieldType": "str",
+        "password": "SYS",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "eed4bf37.31aee",
+        "type": "ui_group",
+        "name": "[ Access Data of Class Room ]",
+        "tab": "6d23db44.1697d4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6d23db44.1697d4",
+        "type": "ui_tab",
+        "name": "Main Tab",
+        "icon": "dashboard",
+        "order": 1
+    }
+]

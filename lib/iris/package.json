@@ -1,0 +1,14 @@
+{
+  "name": "@caretdev/iris",
+  "version": "0.1.0",
+  "description": "Access to InterSytems IRIS",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.1.3"
+  }
+}

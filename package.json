@@ -1,0 +1,20 @@
+{
+  "name": "node-red-contrib-intersystems-iris",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "node-red",
+    "node-red-contrib",
+    "nodered",
+    "intersystems",
+    "intersystems-iris"
+  ],
+  "node-red": {
+    "nodes": {
+      "iris": "src/iris.js"
+    }
+  },
+  "scripts": {},
+  "author": "",
+  "license": "MIT"
+}

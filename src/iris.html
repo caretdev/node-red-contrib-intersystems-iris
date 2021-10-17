@@ -1,0 +1,204 @@
+<script type="text/x-red" data-template-name="InterSystemsIRISConfig">
+	<div class="form-row">
+		<label for="node-config-input-name">
+			<i class="fa fa-tag"></i>
+			<span data-i18n="iris.label.name"></span>
+		</label>
+		<input type="text" id="node-config-input-name" data-i18n="[placeholder]iris.placeholder.name" />
+	</div>
+	<div class="form-row">
+		<ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="iris-config-tabs"></ul>
+	</div>
+	<div id="iris-config-tabs-content" style="min-height: 170px;">
+		<div id="iris-config-tab-connection" style="display: none;">
+			<div class="form-row">
+				<label for="node-config-input-host">
+					<i class="fa fa-server"></i>
+					<span data-i18n="iris.label.host"></span>
+				</label>
+				<input type="text" id="node-config-input-host" data-i18n="[placeholder]iris.placeholder.host" style="width: 80%;" />
+				<input type="hidden" id="node-config-input-hostFieldType" />
+			</div>
+			<div class="form-row">
+					<label for="node-config-input-port">
+						<span data-i18n="iris.label.port"></span>
+					</label>
+					<input type="text" id="node-config-input-port" data-i18n="[placeholder]iris.placeholder.port" style="width: 80%;" />
+					<input type="hidden" id="node-config-input-portFieldType" />
+				</div>
+			<div class="form-row">
+				<label for="node-config-input-namespace">
+					<i class="fa fa-namespace"></i>
+					<span data-i18n="iris.label.namespace"></span>
+				</label>
+				<input type="text" id="node-config-input-namespace" data-i18n="[placeholder]iris.placeholder.namespace" style="width: 80%;" />
+				<input type="hidden" id="node-config-input-namespaceFieldType" />
+			</div>
+			<div class="form-row">
+				<label for="node-config-input-username">
+					<i class="fa fa-username"></i>
+					<span data-i18n="iris.label.username"></span>
+				</label>
+				<input type="text" id="node-config-input-username" data-i18n="[placeholder]iris.placeholder.username" style="width: 80%;" />
+				<input type="hidden" id="node-config-input-usernameFieldType" />
+			</div>
+			<div class="form-row">
+				<label for="node-config-input-password">
+					<i class="fa fa-lock"></i>
+					<span data-i18n="iris.label.password"></span>
+				</label>
+				<input type="password" id="node-config-input-password" data-i18n="[placeholder]iris.placeholder.password" style="width: 80%;" />
+				<input type="hidden" id="node-config-input-passwordFieldType" />
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript">
+	/* global RED:false, $:false */
+	RED.nodes.registerType('InterSystemsIRISConfig', {
+		category: 'config',
+		color: '#00A89E',
+		defaults: {
+			name: {
+				value: '',
+			},
+			host: {
+				value: '127.0.0.1',
+			},
+			hostFieldType: {
+				value: 'str',
+			},
+			port: {
+				value: 1972,
+			},
+			portFieldType: {
+				value: 'num',
+			},
+			namespace: {
+				value: 'USER',
+			},
+			namespaceFieldType: {
+				value: 'str',
+			},
+			username: {
+				value: '',
+			},
+			usernameFieldType: {
+				value: 'str',
+			},
+			password: {
+				value: '',
+			},
+			passwordFieldType: {
+				value: 'str',
+			},
+		},
+		label: function () {
+			if (!this.name) {
+				this.name = this.username + '@' + this.host + ':' + this.port + '/' + this.namespace;
+			}
+			return this.name;
+		},
+		labelStyle: function () {
+			return this.name ? 'node_label_italic' : '';
+		},
+		oneditprepare: function () {
+			const tabs = RED.tabs.create({
+				id: 'iris-config-tabs',
+				onchange: function (tab) {
+					$('#iris-config-tabs-content').children().hide();
+					$('#' + tab.id).show();
+				},
+			});
+			tabs.addTab({
+				id: 'iris-config-tab-connection',
+				label: this._('iris.tab.connection'),
+			});
+			$('#node-config-input-host').typedInput({
+				default: 'str',
+				types: ['str', 'global', 'env'],
+				typeField: $('#node-config-input-hostFieldType'),
+			});
+			$('#node-config-input-port').typedInput({
+				default: 'num',
+				types: ['num', 'global', 'env'],
+				typeField: $('#node-config-input-portFieldType'),
+			});
+			$('#node-config-input-namespace').typedInput({
+				default: 'str',
+				types: ['str', 'global', 'env'],
+				typeField: $('#node-config-input-namespaceFieldType'),
+			});
+			$('#node-config-input-username').typedInput({
+				default: 'str',
+				types: ['str', 'global', 'env'],
+				typeField: $('#node-config-input-usernameFieldType'),
+			});
+			$('#node-config-input-password')
+				.typedInput({
+					default: 'str',
+					types: ['str', 'global', 'env'],
+					typeField: $('#node-config-input-passwordFieldType'),
+				});
+		},
+	});
+</script>
+<script type="text/x-red" data-template-name="intersystems iris">
+	<div class="form-row">
+		<label for="node-input-name">
+			<i class="icon-tag"></i>
+			<span data-i18n="iris.label.name"></span>
+		</label>
+		<input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name" />
+	</div>
+	<div class="form-row">
+		<label for="node-input-InterSystemsIRISConfig">
+			<i class="fa fa-server"></i>
+			<span data-i18n="iris.label.server"></span>
+		</label>
+		<input type="text" id="node-input-InterSystemsIRISConfig" />
+	</div>
+</script>
+
+<script type="text/javascript">
+	/* global RED:false, $:false */
+	RED.nodes.registerType('intersystems iris', {
+		category: 'storage',
+		color: '#00A89E',
+		defaults: {
+			name: {
+				value: '',
+			},
+			InterSystemsIRISConfig: {
+				type: 'InterSystemsIRISConfig',
+				required: true,
+			}
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: 'InterSystems.png',
+		align: 'left',
+		label: function () {
+			var levelNode = RED.nodes.node(this.InterSystemsIRISConfig);
+			return this.name || (levelNode ? levelNode.label() : "intersystems iris");;
+		},
+		labelStyle: function () {
+			return this.name ? 'node_label_italic' : '';
+		},
+		oneditprepare: function () {
+			$('#node-input-split').prop('checked', this.split);
+			$('#node-input-rowsPerMsg').value = this.split ? this.rowsPerMsg : 1;
+			this.editor = RED.editor.createEditor({
+				id: 'node-input-editor',
+				mode: 'ace/mode/sql',
+				value: $('#node-input-query').val(),
+			});
+			this.editor.focus();
+		},
+		oneditsave: function () {
+			$('#node-input-query').val(this.editor.getValue());
+			delete this.editor;
+		},
+	});
+</script>

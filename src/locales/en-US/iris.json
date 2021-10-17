@@ -1,0 +1,42 @@
+{
+	"iris": {
+		"label": {
+			"name": "Name",
+			"host": "Host",
+			"port": "Port",
+			"namespace": "Namespace",
+			"ssl": "SSL",
+			"username": "Username",
+			"password": "Password",
+			"min": "Minimum size",
+			"max": "Maximum size",
+			"idle": "Idle Timeout",
+			"connectionTimeout": "Connection Timeout",
+			"server": "Server",
+			"query": "Query",
+			"split": "Split results in multiple messages",
+			"rowsPerMsg": "Number of rows per message"
+		},
+		"placeholder": {
+			"name": "dbConnection",
+			"host": "127.0.0.1",
+			"port": "1972",
+			"namespace": "USER",
+			"username": "_SYSTEM",
+			"password": "SYS",
+			"min": "10",
+			"max": "1",
+			"idle": "1000 (Milliseconds)",
+			"connectionTimeout": "10000 (Milliseconds)"
+		},
+		"tab": {
+			"connection": "Connection",
+			"security": "Security",
+			"pool": "Pool"
+		},
+		"title": {
+			"max": "Maximum number of physical database connections that this connection pool can contain.",
+			"min": "Minimum number of physical database connections that this connection pool can contain."
+		}
+	}
+}
