@@ -1,7 +1,8 @@
 version: "3.8"
 services:
   iris: 
-    image: store/intersystems/iris-community:2021.1.0.215.0
+    # image: store/intersystems/iris-community:2021.1.0.215.0
+    build: iris
     ports:
       - 1972
       - 52773
