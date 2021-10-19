@@ -51,3 +51,11 @@ And after build and start, open link to Node-RED portal http://localhost:1880/
 Demo flow file for manual installation is available [here](https://raw.githubusercontent.com/caretdev/node-red-contrib-intersystems-iris/main/node-red/flows.json)
 
 ![SQL Flow](https://raw.githubusercontent.com/caretdev/node-red-contrib-intersystems-iris/main/images/example-sql-flow.png)
+
+Production flow
+----
+
+![Production flow](https://raw.githubusercontent.com/caretdev/node-red-contrib-intersystems-iris/main/images/production-flow.png)
+
+And dynamically updated Dashboard, which is avialable by link http://localhost:1880/ui/
+![Production dashboard](https://raw.githubusercontent.com/caretdev/node-red-contrib-intersystems-iris/main/images/production-dashboard.png)
