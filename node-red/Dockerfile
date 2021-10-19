@@ -90,3 +90,5 @@ EXPOSE 1880
 # HEALTHCHECK CMD curl http://localhost:1880/ || exit 1
 
 ENTRYPOINT ["npm", "start", "--cache", "/data/.npm", "--", "--userDir", "/data"]
+
+RUN npm install --no-audit --no-update-notifier --no-fund --save --save-prefix=~ --production --engine-strict node-red-dashboard

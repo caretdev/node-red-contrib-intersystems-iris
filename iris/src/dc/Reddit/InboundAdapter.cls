@@ -29,7 +29,6 @@ Method OnInit() As %Status
 
 Method OnTask() As %Status
 {
-    $$$TRACE("LIMIT:"_..Limit)
     If ((..SSLConfig="") || (..Feed="")) {
         Return $$$OK 
     }
@@ -41,8 +40,7 @@ Method OnTask() As %Status
         Set httprequest = ##class(%Net.HttpRequest).%New()
         Do httprequest.ServerSet(..#SERVER)
         Do httprequest.SSLConfigurationSet(..SSLConfig)
-        Set requestString = ..Feed_".json?before="_..LastPostName_"&limit="_..Limit
-        $$$TRACE(requestString)
+        Set requestString = ..Feed_".json?before=" _ ..LastPostName _ "&limit=" _ ..Limit
         Do httprequest.Get(requestString)
         Set httpResponse = httprequest.HttpResponse
         If (httpResponse.StatusCode '=200) {
@@ -50,20 +48,27 @@ Method OnTask() As %Status
         } 
         Set jo = {}.%FromJSON(httpResponse.Data)
         Set iter = jo.data.children.%GetIterator()
-        Set updateLast = 0
+        Set updateLast = 0, count = 0
         While iter.%GetNext(.key , .value ) {
-            If (value.data.selftext="") { Continue }            
+            If (value.data.selftext="") { Continue }
             Set post = ##class(dc.Reddit.Post).%New()
             $$$ThrowOnError(post.%JSONImport(value.data))
             Set post.OriginalJSON = value.%ToJSON()
             $$$ThrowOnError(post.%Save())
+            Set count = count + 1
             If ('updateLast) {
                 Set ..LastPostName = value.data.name
                 Set updateLast = 1
             }
             $$$ThrowOnError(..BusinessHost.ProcessInput(post))
         }
+        $$$TRACE("LastPostName = " _ ..LastPostName)
+        $$$TRACE("count = " _ count)
+        If count = 0 {
+            Set ..LastPostName = ""
+        }
     } Catch ex {
+        Set ..LastPostName = ""
         Do ex.Log()
         Set tSC = ex.AsStatus()
     }

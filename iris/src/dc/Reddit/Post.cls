@@ -15,6 +15,12 @@ Property Url As %String(%JSONFIELDNAME = "url", MAXLEN = 255);
 
 Property CreatedUTC As %Float(%JSONFIELDNAME = "created_utc");
 
+Property SubReddit As %String(%JSONFIELDNAME = "subreddit", MAXLEN = 255);
+
+Index SubReddit On SubReddit [ Type = bitmap ];
+
+Index Author On Author [ Type = bitmap ];
+
 Storage Default
 {
 <Data name="PostDefaultData">
@@ -53,6 +59,9 @@ Storage Default
 </Value>
 <Value name="12">
 <Value>CreatedUTC</Value>
+</Value>
+<Value name="13">
+<Value>SubReddit</Value>
 </Value>
 </Data>
 <DataLocation>^dc.Reddit.PostD</DataLocation>

@@ -1,0 +1,1320 @@
+[
+    {
+        "id": "9d30db35b2d540ea",
+        "type": "tab",
+        "label": "Production",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "39ac75246186f68c",
+        "type": "tab",
+        "label": "IRIS SQL",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "aa199874e4c9e9fa",
+        "type": "InterSystemsIRISConfig",
+        "name": "_SYSTEM@iris:1972/USER",
+        "host": "iris",
+        "hostFieldType": "str",
+        "port": "1972",
+        "portFieldType": "num",
+        "namespace": "USER",
+        "namespaceFieldType": "str",
+        "username": "_SYSTEM",
+        "usernameFieldType": "str",
+        "password": "SYS",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "eed4bf37.31aee",
+        "type": "ui_group",
+        "name": "InterSystems IRIS Demo",
+        "tab": "c421a1d4cb778a58",
+        "order": 3,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6d23db44.1697d4",
+        "type": "ui_tab",
+        "name": "Main Tab",
+        "icon": "dashboard",
+        "order": 3
+    },
+    {
+        "id": "4e50e243620366ca",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "4dfb5076cb1a0120",
+        "type": "ui_group",
+        "name": "Latest errors",
+        "tab": "c421a1d4cb778a58",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "89749fb7.87f01",
+        "type": "ui_group",
+        "name": "Charts",
+        "tab": "d7901f40.2659d",
+        "order": 2,
+        "disp": false,
+        "width": "6"
+    },
+    {
+        "id": "ab397e95.29ebe",
+        "type": "ui_group",
+        "name": "Inputs",
+        "tab": "d7901f40.2659d",
+        "order": 1,
+        "disp": false,
+        "width": "6"
+    },
+    {
+        "id": "4e7edda4.417004",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "d7901f40.2659d",
+        "order": 3,
+        "disp": false,
+        "width": "6"
+    },
+    {
+        "id": "d7901f40.2659d",
+        "type": "ui_tab",
+        "name": "Charts",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "c421a1d4cb778a58",
+        "type": "ui_tab",
+        "name": "Production",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "606a633165fb68f2",
+        "type": "ui_group",
+        "name": "Top SubReddits",
+        "tab": "c421a1d4cb778a58",
+        "order": 2,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6d5f1d26db6e55a1",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "6d23db44.1697d4",
+        "order": 1,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6069649c75a95958",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 200,
+        "wires": [
+            [
+                "a02e1c8985a0105e"
+            ]
+        ]
+    },
+    {
+        "id": "3630c9019d215784",
+        "type": "comment",
+        "z": "39ac75246186f68c",
+        "name": "Welcome to the demo of ability of using InterSystems IRIS in Node-RED \\n \\n Press small buttons on each inject nodes (on the left), to see it in action",
+        "info": "Welcome to the demo of ability of using InterSystems IRIS in Node-RED\n\\n\n\\n\nPress small buttons on each inject nodes (on the left), to see it in action\n",
+        "x": 430,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c63decc738ffb86b",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "CREATE",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "15",
+        "topic": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "d06ac15f2cc4211f"
+            ]
+        ]
+    },
+    {
+        "id": "346bfd5c1c652f11",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d06ac15f2cc4211f",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "TABLE",
+        "func": "topic = 'CREATE TABLE \"access\" ( ';\ntopic = topic + '\"no\" INT NULL AUTO_INCREMENT PRIMARY KEY,';\ntopic = topic + '\"date\" TIMESTAMP DEFAULT Current_Timestamp,';\ntopic = topic + '\"room\" INT NULL,';\ntopic = topic + '\"id\" INT NULL';\ntopic = topic + ')';\nmsg.topic = topic;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "49b7cf927e386b70"
+            ]
+        ]
+    },
+    {
+        "id": "99c6f2ca2aa3036b",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "DROP",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "ed1a9e23687696b4"
+            ]
+        ]
+    },
+    {
+        "id": "a02e1c8985a0105e",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ed1a9e23687696b4",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "TABLE",
+        "func": "topic = 'DROP TABLE \"access\"';\nmsg.topic = topic;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "6069649c75a95958"
+            ]
+        ]
+    },
+    {
+        "id": "49b7cf927e386b70",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [
+                "346bfd5c1c652f11"
+            ]
+        ]
+    },
+    {
+        "id": "ea2c82a453efa3d2",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "INSERT",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 320,
+        "wires": [
+            [
+                "45bd5c82c27df429"
+            ]
+        ]
+    },
+    {
+        "id": "45bd5c82c27df429",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "INSERT",
+        "func": "if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\nif (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\n\ntopic = \"INSERT INTO \\\"access\\\" (\\\"room\\\", \\\"id\\\") VALUES ('\";\ntopic += room + \"', '\";\ntopic += id + \"')\";\n\nmsg.topic = topic;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 320,
+        "wires": [
+            [
+                "f5d4d8998327ccde"
+            ]
+        ]
+    },
+    {
+        "id": "02d82f1b2ca3e868",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "$string(payload,true)",
+        "targetType": "jsonata",
+        "statusVal": "$join([\"affected_rows\", $string(payload.affected_rows)], \" :\")\t",
+        "statusType": "jsonata",
+        "x": 880,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "630cabde7bab6ecf",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "DELETE ",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 380,
+        "wires": [
+            [
+                "fbb59d48e6ea59fb"
+            ]
+        ]
+    },
+    {
+        "id": "7ffcda2e8cfeb347",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "$string(payload,true)",
+        "targetType": "jsonata",
+        "statusVal": "$join([\"affected_rows\", $string(payload.affected_rows)], \" :\")\t",
+        "statusType": "jsonata",
+        "x": 880,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e19e2c35133cf699",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "UPDATE",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 440,
+        "wires": [
+            [
+                "afa47f5d4de6898a"
+            ]
+        ]
+    },
+    {
+        "id": "1fa905a7b3ad2101",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "$string(payload,true)",
+        "targetType": "jsonata",
+        "statusVal": "$join([\"affected_rows\", $string(payload.affected_rows)], \" :\")\t",
+        "statusType": "jsonata",
+        "x": 880,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "7006ee6c1be362eb",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "COUNT",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 500,
+        "wires": [
+            [
+                "e32b8faebb2809ab"
+            ]
+        ]
+    },
+    {
+        "id": "fbb59d48e6ea59fb",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "DELETE ",
+        "func": "var newMsg = {\n\"topic\" : \"DELETE FROM \\\"access\\\" WHERE \\\"no\\\" = (SELECT TOP 1 \\\"no\\\" FROM \\\"access\\\" ORDER BY \\\"no\\\" DESC)\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "54de784f7cde1823"
+            ]
+        ]
+    },
+    {
+        "id": "afa47f5d4de6898a",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "UPDATE",
+        "func": "var newMsg = {\n\"topic\" : \"UPDATE \\\"access\\\" SET \\\"room\\\"='602' WHERE \\\"no\\\" = (select top 1 \\\"no\\\" from \\\"access\\\" ORDER BY \\\"date\\\" DESC)\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 440,
+        "wires": [
+            [
+                "3a164f918bbc4b07"
+            ]
+        ]
+    },
+    {
+        "id": "e32b8faebb2809ab",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "COUNT",
+        "func": "var newMsg = {\n\"topic\" : \"SELECT COUNT(*) cnt FROM \\\"access\\\"\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 500,
+        "wires": [
+            [
+                "12306ea6b69d57c3"
+            ]
+        ]
+    },
+    {
+        "id": "85f92b0d8e559f70",
+        "type": "debug",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload[0].cnt",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 920,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "f5d4d8998327ccde",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 320,
+        "wires": [
+            [
+                "02d82f1b2ca3e868"
+            ]
+        ]
+    },
+    {
+        "id": "54de784f7cde1823",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 380,
+        "wires": [
+            [
+                "7ffcda2e8cfeb347"
+            ]
+        ]
+    },
+    {
+        "id": "3a164f918bbc4b07",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 440,
+        "wires": [
+            [
+                "1fa905a7b3ad2101"
+            ]
+        ]
+    },
+    {
+        "id": "12306ea6b69d57c3",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 500,
+        "wires": [
+            [
+                "85f92b0d8e559f70"
+            ]
+        ]
+    },
+    {
+        "id": "691d31dc1708fb57",
+        "type": "inject",
+        "z": "39ac75246186f68c",
+        "name": "SELECT",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 580,
+        "wires": [
+            [
+                "1d34be52307bc720"
+            ]
+        ]
+    },
+    {
+        "id": "1d34be52307bc720",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "SELECT",
+        "func": "var newMsg = {\n\"topic\" : \"SELECT TOP 20 * FROM \\\"access\\\" ORDER BY \\\"date\\\" DESC\"\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 580,
+        "wires": [
+            [
+                "d2c039515357b0d4"
+            ]
+        ]
+    },
+    {
+        "id": "e6aab76f603d9a95",
+        "type": "function",
+        "z": "39ac75246186f68c",
+        "name": "Date to TS",
+        "func": "\nfor(var i = 0; i < msg.payload.length; i++){\n    var dd = new Date(parseInt((new Date(msg.payload[i].date).getTime()).toFixed(0)));\n    msg.payload[i].date = dd.toLocaleTimeString('en-US');\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 640,
+        "wires": [
+            [
+                "5df8d2d4ee83c425"
+            ]
+        ]
+    },
+    {
+        "id": "57da9baadc916cd5",
+        "type": "link out",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "links": [
+            "d5f68b78.692828",
+            "01e89513ccd3fd74",
+            "33c14cb5.0c0b14",
+            "8b2213ea.cbdaa"
+        ],
+        "x": 835,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "01e89513ccd3fd74",
+        "type": "link in",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "links": [
+            "57da9baadc916cd5"
+        ],
+        "x": 295,
+        "y": 640,
+        "wires": [
+            [
+                "e6aab76f603d9a95"
+            ]
+        ]
+    },
+    {
+        "id": "d2c039515357b0d4",
+        "type": "intersystems iris",
+        "z": "39ac75246186f68c",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 660,
+        "y": 580,
+        "wires": [
+            [
+                "57da9baadc916cd5"
+            ]
+        ]
+    },
+    {
+        "id": "5df8d2d4ee83c425",
+        "type": "ui_template",
+        "z": "39ac75246186f68c",
+        "group": "6d5f1d26db6e55a1",
+        "name": "",
+        "order": 1,
+        "width": "10",
+        "height": "10",
+        "format": "\n        \n<table style=\"width:100%\">\n  <tr>\n    <th>Index</th> \n    <th>Time</th>\n    <th>Room</th> \n    <th>ID</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:10\">\n    <td><center>{{$index + 1}}</center></td>\n    <td><center>{{msg.payload[$index].date}}</center></td>\n    <td><center>{{msg.payload[$index].room}}</center></td> \n    <td><center>{{msg.payload[$index].id}}</center></td>\n  </tr>\n</table>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 600,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63a04f43fdbf3705",
+        "type": "intersystems iris",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "e301af9f3acfc5af"
+            ]
+        ]
+    },
+    {
+        "id": "505b3b4ee341533c",
+        "type": "function",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "func": "\nreturn {\n    \"topic\": \"select top 20 count(*) cnt,%exact(subreddit) SubReddit from dc_reddit.post group by subreddit order by cnt desc\"\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "63a04f43fdbf3705"
+            ]
+        ]
+    },
+    {
+        "id": "f05b858df53a8669",
+        "type": "inject",
+        "z": "9d30db35b2d540ea",
+        "name": "SubReddit Top 20",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "505b3b4ee341533c"
+            ]
+        ]
+    },
+    {
+        "id": "e301af9f3acfc5af",
+        "type": "ui_template",
+        "z": "9d30db35b2d540ea",
+        "group": "606a633165fb68f2",
+        "name": "Top subreddits",
+        "order": 1,
+        "width": "10",
+        "height": "10",
+        "format": "\n        \n<table style=\"width:100%\">\n  <tr>\n    <th>#</th> \n    <th>SubReddit</th> \n    <th>Count</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:20\">\n    <td>{{$index + 1}}</td>\n    <td>{{msg.payload[$index].SubReddit}}</td>\n    <td><center>{{msg.payload[$index].cnt}}</center></td> \n  </tr>\n</table>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f4027d74e1aaa915",
+        "type": "function",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "func": "\nreturn {\n    \"topic\": \"select count(*) cnt from dc_reddit.post\"\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "e6ba2963394fad5d"
+            ]
+        ]
+    },
+    {
+        "id": "e6ba2963394fad5d",
+        "type": "intersystems iris",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 560,
+        "y": 300,
+        "wires": [
+            [
+                "b93b4a1f927c9abf"
+            ]
+        ]
+    },
+    {
+        "id": "c180b40edebb5bea",
+        "type": "inject",
+        "z": "9d30db35b2d540ea",
+        "name": "Count reddit posts",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "f4027d74e1aaa915"
+            ]
+        ]
+    },
+    {
+        "id": "b93b4a1f927c9abf",
+        "type": "function",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "func": "var value = parseInt(msg.payload[0].cnt, 10);\nreturn {\n    payload: value\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 300,
+        "wires": [
+            [
+                "db9abe8143a36026"
+            ]
+        ]
+    },
+    {
+        "id": "e93f4015ab897039",
+        "type": "inject",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"cnt\":1234}]",
+        "payloadType": "json",
+        "x": 590,
+        "y": 240,
+        "wires": [
+            [
+                "b93b4a1f927c9abf"
+            ]
+        ]
+    },
+    {
+        "id": "210197874984f4f0",
+        "type": "ui_chart",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "group": "4dfb5076cb1a0120",
+        "order": 2,
+        "width": "20",
+        "height": "7",
+        "label": "Messages",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1010,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "87f44287cff0b522",
+        "type": "inject",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[   {     \"TimeCreated\": \"2021-10-19 10:00:22\",     \"Cnt\": 28   },   {     \"TimeCreated\": \"2021-10-19 10:00:07\",     \"Cnt\": 18   },   {     \"TimeCreated\": \"2021-10-19 09:59:52\",     \"Cnt\": 15   },   {     \"TimeCreated\": \"2021-10-19 09:59:51\",     \"Cnt\": 1   },   {     \"TimeCreated\": \"2021-10-19 09:59:36\",     \"Cnt\": 18   },   {     \"TimeCreated\": \"2021-10-19 09:59:21\",     \"Cnt\": 19   },   {     \"TimeCreated\": \"2021-10-19 09:59:06\",     \"Cnt\": 20   },   {     \"TimeCreated\": \"2021-10-19 09:58:50\",     \"Cnt\": 30   },   {     \"TimeCreated\": \"2021-10-19 09:58:35\",     \"Cnt\": 22   },   {     \"TimeCreated\": \"2021-10-19 09:58:20\",     \"Cnt\": 19   } ]",
+        "payloadType": "json",
+        "x": 570,
+        "y": 360,
+        "wires": [
+            [
+                "0d2ea8cd7a6832ae"
+            ]
+        ]
+    },
+    {
+        "id": "0d2ea8cd7a6832ae",
+        "type": "function",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "func": "\nlet series = [\"Count\"];\nlet labels = [\"\"];\n\nlet data = [msg.payload.map(el => {\n    return {\n        \"x\": new Date(el.TimeCreated).getTime(),\n        \"y\": el.Cnt\n    }\n})];\n\nreturn {\n    \"topic\": \"test\",\n    \"payload\": [{ series, data, labels }]\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 420,
+        "wires": [
+            [
+                "210197874984f4f0"
+            ]
+        ]
+    },
+    {
+        "id": "6fc973307b714428",
+        "type": "inject",
+        "z": "9d30db35b2d540ea",
+        "name": "clear",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "x": 810,
+        "y": 360,
+        "wires": [
+            [
+                "210197874984f4f0",
+                "db9abe8143a36026"
+            ]
+        ]
+    },
+    {
+        "id": "c02e4db9589e7c67",
+        "type": "inject",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "0cc9f18e78149ffa"
+            ]
+        ]
+    },
+    {
+        "id": "fe80d04e415db6ab",
+        "type": "intersystems iris",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 560,
+        "y": 420,
+        "wires": [
+            [
+                "0d2ea8cd7a6832ae"
+            ]
+        ]
+    },
+    {
+        "id": "0cc9f18e78149ffa",
+        "type": "function",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "func": "\nreturn {\n    \"topic\": \"select $piece(timecreated,'.',1) TimeCreated,count(*) Cnt  from ens.messageheader group by $piece(timecreated,'.',1) order by timecreated desc\"\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 420,
+        "wires": [
+            [
+                "fe80d04e415db6ab"
+            ]
+        ]
+    },
+    {
+        "id": "b7e6fc7183befd79",
+        "type": "intersystems iris",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 560,
+        "y": 500,
+        "wires": [
+            [
+                "3ff53cd130f03762"
+            ]
+        ]
+    },
+    {
+        "id": "984ed651ac849cd7",
+        "type": "function",
+        "z": "9d30db35b2d540ea",
+        "name": "",
+        "func": "\nreturn {\n    \"topic\": \"select timelogged, text from Ens_Util.Log where type=2 order by TimeLogged Desc\"\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 500,
+        "wires": [
+            [
+                "b7e6fc7183befd79"
+            ]
+        ]
+    },
+    {
+        "id": "75a309b6c8563de5",
+        "type": "inject",
+        "z": "9d30db35b2d540ea",
+        "name": "Production Errors",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "984ed651ac849cd7"
+            ]
+        ]
+    },
+    {
+        "id": "3ff53cd130f03762",
+        "type": "ui_template",
+        "z": "9d30db35b2d540ea",
+        "group": "4dfb5076cb1a0120",
+        "name": "Latest Errors",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "format": "\n        \n<table style=\"width:100%\">\n  <tr>\n    <th>Time</th> \n    <th>Text</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload | limitTo:10\">\n    <td>{{msg.payload[$index].TimeLogged}}</td>\n    <td>{{msg.payload[$index].Text}}</td> \n  </tr>\n</table>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1010,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db9abe8143a36026",
+        "type": "ui_text",
+        "z": "9d30db35b2d540ea",
+        "group": "606a633165fb68f2",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Reddit posts",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1010,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "92cfacca1d78eae5",
+        "type": "ui_button",
+        "z": "9d30db35b2d540ea",
+        "name": "Manual refresh",
+        "group": "4dfb5076cb1a0120",
+        "order": 2,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": "",
+        "tooltip": "Manual refresh",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "refresh",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "505b3b4ee341533c",
+                "f4027d74e1aaa915",
+                "0cc9f18e78149ffa",
+                "984ed651ac849cd7"
+            ]
+        ]
+    }
+]

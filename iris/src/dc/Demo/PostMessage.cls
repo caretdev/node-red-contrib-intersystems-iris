@@ -5,6 +5,8 @@ Property ToEmailAddress As %String;
 
 Property Found As %String;
 
+Index Found On Found [ Type = bitmap ];
+
 Property Post As dc.Reddit.Post;
 
 Storage Default

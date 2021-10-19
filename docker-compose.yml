@@ -4,8 +4,8 @@ services:
     # image: store/intersystems/iris-community:2021.1.0.215.0
     build: iris
     ports:
-      - 1972
-      - 52773
+      - 58810:1972
+      - 58811:52773
     command:
       - -a
       - iris session iris -U %SYS '##class(Security.Users).UnExpireUserPasswords("*")'
@@ -14,7 +14,10 @@ services:
     # build: node-red
     volumes:
       - .:/usr/src/node-red/node_modules/node-red-contrib-intersystems-iris
+      - ./node-red/data/:/data-intersystems/
       - data:/data
+    environment:
+      - FLOWS=/data-intersystems/flows.json
     ports:
       - 1880:1880
 volumes:
