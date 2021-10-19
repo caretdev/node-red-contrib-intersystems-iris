@@ -157,40 +157,6 @@
         "className": ""
     },
     {
-        "id": "89749fb7.87f01",
-        "type": "ui_group",
-        "name": "Charts",
-        "tab": "d7901f40.2659d",
-        "order": 2,
-        "disp": false,
-        "width": "6"
-    },
-    {
-        "id": "ab397e95.29ebe",
-        "type": "ui_group",
-        "name": "Inputs",
-        "tab": "d7901f40.2659d",
-        "order": 1,
-        "disp": false,
-        "width": "6"
-    },
-    {
-        "id": "4e7edda4.417004",
-        "type": "ui_group",
-        "name": "Group 3",
-        "tab": "d7901f40.2659d",
-        "order": 3,
-        "disp": false,
-        "width": "6"
-    },
-    {
-        "id": "d7901f40.2659d",
-        "type": "ui_tab",
-        "name": "Charts",
-        "icon": "dashboard",
-        "order": 1
-    },
-    {
         "id": "c421a1d4cb778a58",
         "type": "ui_tab",
         "name": "Production",
