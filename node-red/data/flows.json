@@ -1761,7 +1761,7 @@
         "order": 11,
         "width": 20,
         "height": 12,
-        "format": "<table style=\"width:100%\">\n  <tr>\n    <th>Column Name</th> \n    <th>Data Type</th>\n    <th>Nullable</th>\n    <th>Primary</th>\n    <th>Auto Increment</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\">\n    <td>{{x.COLUMN_NAME}}</td>\n    <td>{{x.DATA_TYPE}}</td> \n    <td><input type='checkbox' ng-checked=\"x.IS_NULLABLE == 'YES'\"></td> \n    <td><input type='checkbox' ng-checked=\"x.PRIMARY_KEY == 'YES'\"></td> \n    <td><input type='checkbox' ng-checked=\"x.AUTO_INCREMENT == 'YES'\"></td> \n  </tr>\n</table>\n",
+        "format": "<table style=\"width:100%\">\n  <tr>\n    <th>Column Name</th> \n    <th>Data Type</th>\n    <th>Nullable</th>\n    <th>Primary</th>\n    <th>Auto Increment</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\">\n    <td>{{x.COLUMN_NAME}}</td>\n    <td>{{x.DATA_TYPE}}</td> \n    <td><center><input type='checkbox' ng-checked=\"x.IS_NULLABLE == 'YES'\"></center></td> \n    <td><center><input type='checkbox' ng-checked=\"x.PRIMARY_KEY == 'YES'\"></center></td> \n    <td><center><input type='checkbox' ng-checked=\"x.AUTO_INCREMENT == 'YES'\"></center></td> \n  </tr>\n</table>\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
