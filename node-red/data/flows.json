@@ -14,6 +14,20 @@
         "info": ""
     },
     {
+        "id": "1ea9d5a0268cb260",
+        "type": "tab",
+        "label": "Messages",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d3e5690d3717bcbf",
+        "type": "tab",
+        "label": "Create Table",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "aa199874e4c9e9fa",
         "type": "InterSystemsIRISConfig",
         "name": "_SYSTEM@iris:1972/USER",
@@ -29,22 +43,13 @@
         "passwordFieldType": "str"
     },
     {
-        "id": "eed4bf37.31aee",
-        "type": "ui_group",
-        "name": "InterSystems IRIS Demo",
-        "tab": "c421a1d4cb778a58",
-        "order": 3,
-        "disp": true,
-        "width": "10",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "6d23db44.1697d4",
         "type": "ui_tab",
         "name": "Main Tab",
         "icon": "dashboard",
-        "order": 3
+        "order": 3,
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "4e50e243620366ca",
@@ -131,7 +136,7 @@
             "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
-            "allowTempTheme": "true",
+            "allowTempTheme": "none",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
                 "sx": 48,
@@ -188,6 +193,44 @@
         "className": ""
     },
     {
+        "id": "019313c909cf5cc1",
+        "type": "ui_group",
+        "name": "demo",
+        "tab": "6d23db44.1697d4",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5f17e3a3.4c85ac",
+        "type": "ui_tab",
+        "name": "Create Table demo",
+        "icon": "create",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "cb135bc2.cc3d9",
+        "type": "ui_tab",
+        "name": "Anomaly",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c19ad70c257cbd31",
+        "type": "ui_group",
+        "name": "Table",
+        "tab": "5f17e3a3.4c85ac",
+        "order": 1,
+        "disp": true,
+        "width": 20,
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "6069649c75a95958",
         "type": "intersystems iris",
         "z": "39ac75246186f68c",
@@ -235,7 +278,7 @@
         "y": 260,
         "wires": [
             [
-                "d06ac15f2cc4211f"
+                "8f1cbff8a58b2835"
             ]
         ]
     },
@@ -254,25 +297,6 @@
         "x": 890,
         "y": 260,
         "wires": []
-    },
-    {
-        "id": "d06ac15f2cc4211f",
-        "type": "function",
-        "z": "39ac75246186f68c",
-        "name": "TABLE",
-        "func": "topic = 'CREATE TABLE \"access\" ( ';\ntopic = topic + '\"no\" INT NULL AUTO_INCREMENT PRIMARY KEY,';\ntopic = topic + '\"date\" TIMESTAMP DEFAULT Current_Timestamp,';\ntopic = topic + '\"room\" INT NULL,';\ntopic = topic + '\"id\" INT NULL';\ntopic = topic + ')';\nmsg.topic = topic;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 260,
-        "wires": [
-            [
-                "49b7cf927e386b70"
-            ]
-        ]
     },
     {
         "id": "99c6f2ca2aa3036b",
@@ -298,7 +322,7 @@
         "y": 200,
         "wires": [
             [
-                "ed1a9e23687696b4"
+                "7724b0c3580f8ea1"
             ]
         ]
     },
@@ -317,25 +341,6 @@
         "x": 890,
         "y": 200,
         "wires": []
-    },
-    {
-        "id": "ed1a9e23687696b4",
-        "type": "function",
-        "z": "39ac75246186f68c",
-        "name": "TABLE",
-        "func": "topic = 'DROP TABLE \"access\"';\nmsg.topic = topic;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 200,
-        "wires": [
-            [
-                "6069649c75a95958"
-            ]
-        ]
     },
     {
         "id": "49b7cf927e386b70",
@@ -358,14 +363,17 @@
         "name": "INSERT",
         "props": [
             {
-                "p": "payload",
-                "v": "",
-                "vt": "date"
+                "p": "payload"
             },
             {
-                "p": "topic",
-                "v": "",
-                "vt": "string"
+                "p": "room",
+                "v": "$random() < 0.5 ? 503 : 602",
+                "vt": "jsonata"
+            },
+            {
+                "p": "id",
+                "v": "$random() < 0.5 ? 9909 : 1893",
+                "vt": "jsonata"
             }
         ],
         "repeat": "",
@@ -373,32 +381,12 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
         "payloadType": "date",
         "x": 250,
         "y": 320,
         "wires": [
             [
-                "45bd5c82c27df429"
-            ]
-        ]
-    },
-    {
-        "id": "45bd5c82c27df429",
-        "type": "function",
-        "z": "39ac75246186f68c",
-        "name": "INSERT",
-        "func": "if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\nif (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\n\ntopic = \"INSERT INTO \\\"access\\\" (\\\"room\\\", \\\"id\\\") VALUES ('\";\ntopic += room + \"', '\";\ntopic += id + \"')\";\n\nmsg.topic = topic;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 320,
-        "wires": [
-            [
-                "f5d4d8998327ccde"
+                "ddf15e9e93d0edd6"
             ]
         ]
     },
@@ -435,7 +423,7 @@
         "y": 380,
         "wires": [
             [
-                "fbb59d48e6ea59fb"
+                "275dfd558309004f"
             ]
         ]
     },
@@ -472,7 +460,7 @@
         "y": 440,
         "wires": [
             [
-                "afa47f5d4de6898a"
+                "273e36fb10977c07"
             ]
         ]
     },
@@ -509,64 +497,7 @@
         "y": 500,
         "wires": [
             [
-                "e32b8faebb2809ab"
-            ]
-        ]
-    },
-    {
-        "id": "fbb59d48e6ea59fb",
-        "type": "function",
-        "z": "39ac75246186f68c",
-        "name": "DELETE ",
-        "func": "var newMsg = {\n\"topic\" : \"DELETE FROM \\\"access\\\" WHERE \\\"no\\\" = (SELECT TOP 1 \\\"no\\\" FROM \\\"access\\\" ORDER BY \\\"no\\\" DESC)\"\n}\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 380,
-        "wires": [
-            [
-                "54de784f7cde1823"
-            ]
-        ]
-    },
-    {
-        "id": "afa47f5d4de6898a",
-        "type": "function",
-        "z": "39ac75246186f68c",
-        "name": "UPDATE",
-        "func": "var newMsg = {\n\"topic\" : \"UPDATE \\\"access\\\" SET \\\"room\\\"='602' WHERE \\\"no\\\" = (select top 1 \\\"no\\\" from \\\"access\\\" ORDER BY \\\"date\\\" DESC)\"\n}\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 440,
-        "wires": [
-            [
-                "3a164f918bbc4b07"
-            ]
-        ]
-    },
-    {
-        "id": "e32b8faebb2809ab",
-        "type": "function",
-        "z": "39ac75246186f68c",
-        "name": "COUNT",
-        "func": "var newMsg = {\n\"topic\" : \"SELECT COUNT(*) cnt FROM \\\"access\\\"\"\n}\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 500,
-        "wires": [
-            [
-                "12306ea6b69d57c3"
+                "22e523e3ba44a288"
             ]
         ]
     },
@@ -650,14 +581,12 @@
         "name": "SELECT",
         "props": [
             {
-                "p": "payload",
-                "v": "",
-                "vt": "date"
+                "p": "payload"
             },
             {
-                "p": "topic",
-                "v": "",
-                "vt": "string"
+                "p": "limit",
+                "v": "20",
+                "vt": "num"
             }
         ],
         "repeat": "1",
@@ -665,32 +594,12 @@
         "once": false,
         "onceDelay": "1",
         "topic": "",
-        "payload": "",
         "payloadType": "date",
         "x": 260,
-        "y": 580,
+        "y": 560,
         "wires": [
             [
-                "1d34be52307bc720"
-            ]
-        ]
-    },
-    {
-        "id": "1d34be52307bc720",
-        "type": "function",
-        "z": "39ac75246186f68c",
-        "name": "SELECT",
-        "func": "var newMsg = {\n\"topic\" : \"SELECT TOP 20 * FROM \\\"access\\\" ORDER BY \\\"date\\\" DESC\"\n}\nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 580,
-        "wires": [
-            [
-                "d2c039515357b0d4"
+                "b026a9e86363fe27"
             ]
         ]
     },
@@ -706,7 +615,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "5df8d2d4ee83c425"
@@ -725,7 +634,7 @@
             "8b2213ea.cbdaa"
         ],
         "x": 835,
-        "y": 580,
+        "y": 560,
         "wires": []
     },
     {
@@ -737,7 +646,7 @@
             "57da9baadc916cd5"
         ],
         "x": 295,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "e6aab76f603d9a95"
@@ -751,7 +660,7 @@
         "name": "",
         "InterSystemsIRISConfig": "aa199874e4c9e9fa",
         "x": 660,
-        "y": 580,
+        "y": 560,
         "wires": [
             [
                 "57da9baadc916cd5"
@@ -774,7 +683,7 @@
         "templateScope": "local",
         "className": "",
         "x": 600,
-        "y": 640,
+        "y": 620,
         "wires": [
             []
         ]
@@ -1280,6 +1189,1062 @@
                 "f4027d74e1aaa915",
                 "0cc9f18e78149ffa",
                 "984ed651ac849cd7"
+            ]
+        ]
+    },
+    {
+        "id": "7e52b9059ce6c575",
+        "type": "intersystems iris",
+        "z": "1ea9d5a0268cb260",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 580,
+        "y": 360,
+        "wires": [
+            [
+                "bab1fc6247c40495",
+                "21494acd375d9d81"
+            ]
+        ]
+    },
+    {
+        "id": "faf019012916d3ae",
+        "type": "inject",
+        "z": "1ea9d5a0268cb260",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 360,
+        "wires": [
+            [
+                "7d835454d0ee8a2a"
+            ]
+        ]
+    },
+    {
+        "id": "43d00f5f9b12d0e3",
+        "type": "ui_gauge",
+        "z": "1ea9d5a0268cb260",
+        "name": "",
+        "group": "019313c909cf5cc1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1010,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "4c8a4b18284ca0d6",
+        "type": "ui_text",
+        "z": "1ea9d5a0268cb260",
+        "group": "019313c909cf5cc1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1010,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "bab1fc6247c40495",
+        "type": "function",
+        "z": "1ea9d5a0268cb260",
+        "name": "",
+        "func": "msg.payload = parseInt(msg.payload[0]['Aggregate_1'],10);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 360,
+        "wires": [
+            [
+                "43d00f5f9b12d0e3",
+                "4c8a4b18284ca0d6"
+            ]
+        ]
+    },
+    {
+        "id": "21494acd375d9d81",
+        "type": "debug",
+        "z": "1ea9d5a0268cb260",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "715380a8.42ec7",
+        "type": "debug",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1390,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "65d2e9d6.5ca5",
+        "type": "ui_button",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "group": "c19ad70c257cbd31",
+        "order": 3,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Create",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "create",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 590,
+        "y": 380,
+        "wires": [
+            [
+                "4cd3ef8653a70656"
+            ]
+        ]
+    },
+    {
+        "id": "a804fab0426ac801",
+        "type": "intersystems iris",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 1180,
+        "y": 380,
+        "wires": [
+            [
+                "715380a8.42ec7",
+                "bb0d057356ca5f2e"
+            ]
+        ]
+    },
+    {
+        "id": "7724b0c3580f8ea1",
+        "type": "template",
+        "z": "39ac75246186f68c",
+        "name": "TABLE",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "DROP TABLE \"access\"",
+        "output": "str",
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "6069649c75a95958"
+            ]
+        ]
+    },
+    {
+        "id": "8f1cbff8a58b2835",
+        "type": "template",
+        "z": "39ac75246186f68c",
+        "name": "TABLE",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "sql",
+        "syntax": "mustache",
+        "template": "CREATE TABLE \"access\" (\n\"no\" INT NULL AUTO_INCREMENT PRIMARY KEY,\n\"date\" TIMESTAMP DEFAULT Current_Timestamp,\n\"room\" INT NULL,\n\"id\" INT NULL)",
+        "output": "str",
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "49b7cf927e386b70"
+            ]
+        ]
+    },
+    {
+        "id": "275dfd558309004f",
+        "type": "template",
+        "z": "39ac75246186f68c",
+        "name": "DELETE",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "sql",
+        "syntax": "mustache",
+        "template": "DELETE FROM \"access\" WHERE \"no\" = (\nSELECT TOP 1 \"no\" \nFROM \"access\" ORDER BY \"no\" DESC)",
+        "output": "str",
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "54de784f7cde1823"
+            ]
+        ]
+    },
+    {
+        "id": "273e36fb10977c07",
+        "type": "template",
+        "z": "39ac75246186f68c",
+        "name": "UPDATE",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "sql",
+        "syntax": "mustache",
+        "template": "UPDATE \"access\" SET \"room\"='602' \nWHERE \"no\" = (\n    SELECT top 1 \"no\" \n    FROM \"access\" \n    ORDER BY \"date\" DESC\n)",
+        "output": "str",
+        "x": 420,
+        "y": 440,
+        "wires": [
+            [
+                "3a164f918bbc4b07"
+            ]
+        ]
+    },
+    {
+        "id": "22e523e3ba44a288",
+        "type": "template",
+        "z": "39ac75246186f68c",
+        "name": "COUNT",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "sql",
+        "syntax": "mustache",
+        "template": "SELECT COUNT(*) AS cnt FROM \"access\"",
+        "output": "str",
+        "x": 420,
+        "y": 500,
+        "wires": [
+            [
+                "12306ea6b69d57c3"
+            ]
+        ]
+    },
+    {
+        "id": "b026a9e86363fe27",
+        "type": "template",
+        "z": "39ac75246186f68c",
+        "name": "SELECT",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "sql",
+        "syntax": "mustache",
+        "template": "SELECT TOP {{limit}} * \nFROM \"access\" \nORDER BY \"date\" DESC",
+        "output": "str",
+        "x": 420,
+        "y": 560,
+        "wires": [
+            [
+                "d2c039515357b0d4"
+            ]
+        ]
+    },
+    {
+        "id": "ddf15e9e93d0edd6",
+        "type": "template",
+        "z": "39ac75246186f68c",
+        "name": "INSERT",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "sql",
+        "syntax": "mustache",
+        "template": "INSERT INTO \"access\" (\"room\", \"id\") \nVALUES ('{{room}}', '{{id}}')",
+        "output": "str",
+        "x": 420,
+        "y": 320,
+        "wires": [
+            [
+                "f5d4d8998327ccde"
+            ]
+        ]
+    },
+    {
+        "id": "7d835454d0ee8a2a",
+        "type": "template",
+        "z": "1ea9d5a0268cb260",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "select count(*) from ens.messageheader",
+        "output": "str",
+        "x": 340,
+        "y": 360,
+        "wires": [
+            [
+                "7e52b9059ce6c575"
+            ]
+        ]
+    },
+    {
+        "id": "c0c4842d5d8cc73a",
+        "type": "ui_text_input",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "label": "SQL Table name",
+        "tooltip": "",
+        "group": "c19ad70c257cbd31",
+        "order": 1,
+        "width": 16,
+        "height": 1,
+        "passthru": false,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "topicType": "msg",
+        "x": 380,
+        "y": 500,
+        "wires": [
+            [
+                "4f9edab0c52dbb5e"
+            ]
+        ]
+    },
+    {
+        "id": "0d024f25ca635aa7",
+        "type": "ui_button",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "group": "c19ad70c257cbd31",
+        "order": 2,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Check",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "check",
+        "payload": "tablename",
+        "payloadType": "flow",
+        "topic": "",
+        "topicType": "str",
+        "x": 730,
+        "y": 500,
+        "wires": [
+            [
+                "bb0d057356ca5f2e"
+            ]
+        ]
+    },
+    {
+        "id": "6df0501490f1f789",
+        "type": "inject",
+        "z": "d3e5690d3717bcbf",
+        "name": "Initial buttons state",
+        "props": [
+            {
+                "p": "enabled",
+                "v": "false",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 290,
+        "y": 380,
+        "wires": [
+            [
+                "0d024f25ca635aa7",
+                "65d2e9d6.5ca5"
+            ]
+        ]
+    },
+    {
+        "id": "9e9cd4c6508fa4aa",
+        "type": "inject",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "enabled",
+                "v": "true",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 230,
+        "y": 500,
+        "wires": [
+            [
+                "c0c4842d5d8cc73a"
+            ]
+        ]
+    },
+    {
+        "id": "4f9edab0c52dbb5e",
+        "type": "change",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tablename",
+                "pt": "flow",
+                "to": "$match(payload, /\\./) ? payload : $join(['SQLUser.',payload])",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "enabled",
+                "pt": "msg",
+                "to": "msg.payload != ''",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 500,
+        "wires": [
+            [
+                "0d024f25ca635aa7"
+            ]
+        ]
+    },
+    {
+        "id": "882d67686fe40577",
+        "type": "template",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "sql",
+        "syntax": "mustache",
+        "template": "SELECT \ncolumn_name, \ndata_type, \nauto_increment, \nprimary_key, \nis_nullable \n\nFROM INFORMATION_SCHEMA.columns \nWHERE String(Table_schema,'.',TABLE_NAME ) = '{{tablename}}'\n",
+        "output": "str",
+        "x": 1060,
+        "y": 500,
+        "wires": [
+            [
+                "bd52b0fe26821bb3"
+            ]
+        ]
+    },
+    {
+        "id": "bd52b0fe26821bb3",
+        "type": "intersystems iris",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 860,
+        "y": 600,
+        "wires": [
+            [
+                "a343f1df690d8d62",
+                "df8b49e9cbfb1ac2",
+                "15c0238dbc20d030",
+                "7e70e6c6588ca80f"
+            ]
+        ]
+    },
+    {
+        "id": "a343f1df690d8d62",
+        "type": "function",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "func": "if (!msg.payload.length) {\n    return [null, {enabled: true}];\n}\nmsg.payload = 'Table already exists';\nmsg.topic = '';\nreturn [msg, {enabled: false}];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 600,
+        "wires": [
+            [],
+            [
+                "65d2e9d6.5ca5"
+            ]
+        ]
+    },
+    {
+        "id": "df8b49e9cbfb1ac2",
+        "type": "change",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "columns",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15c0238dbc20d030",
+        "type": "ui_template",
+        "z": "d3e5690d3717bcbf",
+        "group": "c19ad70c257cbd31",
+        "name": "Columns",
+        "order": 11,
+        "width": 20,
+        "height": 12,
+        "format": "<table style=\"width:100%\">\n  <tr>\n    <th>Column Name</th> \n    <th>Data Type</th>\n    <th>Nullable</th>\n    <th>Primary</th>\n    <th>Auto Increment</th>\n  </tr>\n  <tr ng-repeat=\"x in msg.payload\">\n    <td>{{x.COLUMN_NAME}}</td>\n    <td>{{x.DATA_TYPE}}</td> \n    <td><input type='checkbox' ng-checked=\"x.IS_NULLABLE == 'YES'\"></td> \n    <td><input type='checkbox' ng-checked=\"x.PRIMARY_KEY == 'YES'\"></td> \n    <td><input type='checkbox' ng-checked=\"x.AUTO_INCREMENT == 'YES'\"></td> \n  </tr>\n</table>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1080,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7e70e6c6588ca80f",
+        "type": "debug",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c0b72b3326024cb6",
+        "type": "ui_dropdown",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Data Type",
+        "group": "c19ad70c257cbd31",
+        "order": 5,
+        "width": 10,
+        "height": 1,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "INT",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "VARCHAR",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "TIMESTAMP",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "type",
+        "topicType": "str",
+        "className": "",
+        "x": 370,
+        "y": 780,
+        "wires": [
+            [
+                "580a3f81f3d954e9"
+            ]
+        ]
+    },
+    {
+        "id": "bbcbddf701736db6",
+        "type": "ui_text_input",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "label": "Column Name",
+        "tooltip": "",
+        "group": "c19ad70c257cbd31",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "mode": "text",
+        "delay": 300,
+        "topic": "name",
+        "sendOnBlur": true,
+        "topicType": "str",
+        "x": 380,
+        "y": 740,
+        "wires": [
+            [
+                "580a3f81f3d954e9"
+            ]
+        ]
+    },
+    {
+        "id": "7a87b907e3db951a",
+        "type": "ui_switch",
+        "z": "d3e5690d3717bcbf",
+        "name": "is nullable",
+        "label": "",
+        "tooltip": "Nullable",
+        "group": "c19ad70c257cbd31",
+        "order": 6,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "nullable",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 360,
+        "y": 820,
+        "wires": [
+            [
+                "580a3f81f3d954e9"
+            ]
+        ]
+    },
+    {
+        "id": "aaecc9d7b315b79e",
+        "type": "ui_switch",
+        "z": "d3e5690d3717bcbf",
+        "name": "primary key",
+        "label": "",
+        "tooltip": "Primary Key",
+        "group": "c19ad70c257cbd31",
+        "order": 8,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "primary",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 370,
+        "y": 860,
+        "wires": [
+            [
+                "580a3f81f3d954e9"
+            ]
+        ]
+    },
+    {
+        "id": "2252a18febb5768d",
+        "type": "ui_switch",
+        "z": "d3e5690d3717bcbf",
+        "name": "auto increment",
+        "label": "",
+        "tooltip": "Auto Increment",
+        "group": "c19ad70c257cbd31",
+        "order": 7,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "increment",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 380,
+        "y": 900,
+        "wires": [
+            [
+                "580a3f81f3d954e9"
+            ]
+        ]
+    },
+    {
+        "id": "9e6097b2dad50b0e",
+        "type": "function",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "func": "msg.column = msg.column || {};\nmsg.column[msg.topic] = msg.payload;\nvar tablename = msg.tablename\nvar {name, type, nullable, primary, increment} = msg.column;\nmsg.query = `ALTER TABLE ${tablename} ADD COLUMN \"${name}\" ${type} ${nullable?'NULL':'NOT NULL'} ${increment?'AUTO_INCREMENT':''} ${primary?'PRIMARY KEY':''}`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 820,
+        "wires": [
+            [
+                "7ad63de607593d2d",
+                "cd503b690649581d"
+            ]
+        ]
+    },
+    {
+        "id": "580a3f81f3d954e9",
+        "type": "change",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "column",
+                "pt": "msg",
+                "to": "column",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "tablename",
+                "pt": "msg",
+                "to": "tablename",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 820,
+        "wires": [
+            [
+                "9e6097b2dad50b0e"
+            ]
+        ]
+    },
+    {
+        "id": "72da78d1b62f9084",
+        "type": "debug",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7ad63de607593d2d",
+        "type": "change",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "column",
+                "pt": "flow",
+                "to": "column",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "flow",
+                "to": "query",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 820,
+        "wires": [
+            [
+                "72da78d1b62f9084"
+            ]
+        ]
+    },
+    {
+        "id": "cd503b690649581d",
+        "type": "ui_text",
+        "z": "d3e5690d3717bcbf",
+        "d": true,
+        "group": "c19ad70c257cbd31",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.query}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 950,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "e0af8e06566f2c9e",
+        "type": "ui_button",
+        "z": "d3e5690d3717bcbf",
+        "name": "add",
+        "group": "c19ad70c257cbd31",
+        "order": 9,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "add",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 360,
+        "y": 980,
+        "wires": [
+            [
+                "fa3318f75cf8ae99",
+                "2454397288e16ee3"
+            ]
+        ]
+    },
+    {
+        "id": "fa3318f75cf8ae99",
+        "type": "function",
+        "z": "d3e5690d3717bcbf",
+        "name": "clear",
+        "func": "\nreturn {\n    \"payload\": ''\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 820,
+        "wires": [
+            [
+                "bbcbddf701736db6",
+                "c0b72b3326024cb6",
+                "7a87b907e3db951a",
+                "aaecc9d7b315b79e",
+                "2252a18febb5768d"
+            ]
+        ]
+    },
+    {
+        "id": "bb0d057356ca5f2e",
+        "type": "change",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tablename",
+                "pt": "msg",
+                "to": "tablename",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 500,
+        "wires": [
+            [
+                "882d67686fe40577"
+            ]
+        ]
+    },
+    {
+        "id": "3f7e01e3a25193fe",
+        "type": "intersystems iris",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "InterSystemsIRISConfig": "aa199874e4c9e9fa",
+        "x": 900,
+        "y": 980,
+        "wires": [
+            [
+                "bb0d057356ca5f2e"
+            ]
+        ]
+    },
+    {
+        "id": "2454397288e16ee3",
+        "type": "change",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "query",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 980,
+        "wires": [
+            [
+                "3f7e01e3a25193fe"
+            ]
+        ]
+    },
+    {
+        "id": "4cd3ef8653a70656",
+        "type": "change",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tablename",
+                "pt": "msg",
+                "to": "tablename",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 380,
+        "wires": [
+            [
+                "19aa9e2c79bd793b"
+            ]
+        ]
+    },
+    {
+        "id": "19aa9e2c79bd793b",
+        "type": "template",
+        "z": "d3e5690d3717bcbf",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "CREATE TABLE {{tablename}} ( \n    id INT AUTO_INCREMENT PRIMARY KEY\n)",
+        "output": "str",
+        "x": 940,
+        "y": 380,
+        "wires": [
+            [
+                "a804fab0426ac801"
             ]
         ]
     }
