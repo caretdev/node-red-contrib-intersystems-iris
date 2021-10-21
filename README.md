@@ -59,3 +59,9 @@ Production flow
 
 And dynamically updated Dashboard, which is avialable by link http://localhost:1880/ui/
 ![Production dashboard](https://raw.githubusercontent.com/caretdev/node-red-contrib-intersystems-iris/main/images/production-dashboard.png)
+
+Some complex flow
+----
+
+![Production dashboard](https://raw.githubusercontent.com/caretdev/node-red-contrib-intersystems-iris/main/images/create-table-flow.png)
+![Production dashboard](https://raw.githubusercontent.com/caretdev/node-red-contrib-intersystems-iris/main/images/create-table-ui.png)
